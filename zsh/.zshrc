@@ -3,20 +3,9 @@
 # by Redh
 #
 
-# Keybindings
-bindkey -e
-bindkey "\e[3~" delete-char # Del
-bindkey "\e[F" end-of-line # End
-bindkey "\e[4~" end-of-line # End
-bindkey "\e[H" beginning-of-line # Pos1
-bindkey "\e[1~" beginning-of-line # Pos1
-bindkey "\e[2~" overwrite-mode # Insert
-bindkey "^[" reset-prompt # esc
-bindkey "\e[5~" undefined-key # page-up
-bindkey "\e[6~" undefined-key # page-down
-
-# Imports
+# Local
 source "$ZDOTDIR/aliases.zsh"
+source "$ZDOTDIR/keybinding.zsh"
 source "$ZDOTDIR/exports.zsh"
 source "$ZDOTDIR/prompt.zsh"
 
