@@ -26,7 +26,7 @@ alias fgrep="grep -F"
 
 alias yay="paru"
 #alias yeet="paru -R"
-alias yeet="paru -Rns"
+alias yeet="paru -Runs"
 
 alias df="df -h"
 alias free="free -m"
