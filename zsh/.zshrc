@@ -39,6 +39,7 @@ setopt append_history
 setopt inc_append_history
 # expire duplicates first
 setopt hist_expire_dups_first 
+setopt hist_ignore_dups 
 # removes blank lines from history
 setopt hist_reduce_blanks
 # when using !! nee to confirm
