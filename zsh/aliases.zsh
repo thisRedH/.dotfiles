@@ -10,6 +10,7 @@ alias ltree="exa --tree -la"
 alias history="history -f"
 
 alias cat="bat -p"
+alias bat="bat --theme=Dracula"
 alias more="less"
 
 alias vimo="/bin/vim"
