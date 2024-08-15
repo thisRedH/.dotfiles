@@ -1,3 +1,2 @@
-
 echo $(date)
 fastfetch

@@ -11,8 +11,8 @@ alias history="history -f"
 
 alias cat="bat -p"
 alias more="less"
-alias less="most"
 
+alias vimo="/bin/vim"
 alias vim="nvim"
 alias v="nvim"
 
@@ -30,6 +30,9 @@ alias yeet="paru -Runs"
 
 alias df="df -h"
 alias free="free -m"
+
+alias :q="exit"
+alias d="cd ~/dev"
 
 # Windows Stuff
 alias help="man"

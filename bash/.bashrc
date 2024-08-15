@@ -1,7 +1,5 @@
-#
-# Made for debian based servers,
-# by Redh
-#
+# by thisRedh
+# Super basic file
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -17,5 +15,7 @@ alias grep="grep --color=auto"
 if command -v nala &> /dev/null; then
     alias apt="nala"
 fi
+
+export EDITOR="vim"
 
 PS1='\u@\h \w \$ '
