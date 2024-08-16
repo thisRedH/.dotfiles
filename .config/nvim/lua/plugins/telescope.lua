@@ -8,6 +8,9 @@ return {
                 prompt_position = "top",
             },
             sorting_strategy = "ascending",
+            winblend = function()
+                return vim.g.redh_winblend
+            end,
         },
     },
     init = function()

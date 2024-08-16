@@ -59,6 +59,9 @@ vim.opt.splitbelow = true
 
 vim.o.laststatus = 3
 
+vim.o.winblend = 0
+vim.g.redh_winblend = 15 -- only for some plugins
+
 if os.getenv("SSH_CONNECTION") or os.getenv("SSH_CLIENT") or os.getenv("SSH_TTY") then
     vim.g.clipboard = {
         name = "OSC 52",

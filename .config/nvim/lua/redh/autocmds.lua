@@ -50,13 +50,14 @@ vim.api.nvim_create_autocmd("TermOpen", {
 
 vim.api.nvim_create_user_command("ToggleTransparent", function()
     local nrml = vim.api.nvim_get_hl(0, { name = "Normal" })
-    local nrmlfl = vim.api.nvim_get_hl(0, { name = "NormalFloat" })
 
     vim.cmd.colorscheme(vim.g.colors_name)
 
-    if nrml.bg or nrmlfl.bg then
+    if nrml.bg then
         vim.api.nvim_set_hl(0, "Normal", vim.tbl_extend("force", nrml, { bg = "none" }))
-        vim.api.nvim_set_hl(0, "NormalFloat", vim.tbl_extend("force", nrmlfl, { bg = "none" }))
+        vim.g.redh_winblend = 0
+    else
+        vim.g.redh_winblend = 15
     end
 end, {})
 
