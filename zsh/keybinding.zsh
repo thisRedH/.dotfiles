@@ -17,3 +17,6 @@ bindkey "^[[1;5C" forward-word          # [Ctrl-RightArrow]
 bindkey "^[[1;5D" backward-word         # [Ctrl-LeftArrow]
 bindkey "^H" backward-kill-word         # [Ctrl-Backspace]
 bindkey "^[[3;5~" kill-word             # [Ctrl-Delete]
+
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward

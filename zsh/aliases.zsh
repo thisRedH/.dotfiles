@@ -35,6 +35,22 @@ alias free="free -m"
 alias :q="exit"
 alias d="cd ~/dev"
 
+alias resetall="tput sgr0 && tput rmam"
+
 # Windows Stuff
 alias help="man"
 alias cls="clear"
+
+export YSU_IGNORED_ALIASES=(
+    "yay"
+    "yeet"
+
+    "v"
+    "vim"
+
+    ":q"
+    "d"
+
+    "help"
+    "cls"
+)
