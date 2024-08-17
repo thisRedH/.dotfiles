@@ -9,7 +9,6 @@ source "$ZDOTDIR/prompt.zsh"
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$ZDOTDIR/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
-source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"
 
 # History
 mkdir -p "$HOME/.cache/zsh"
@@ -31,4 +30,3 @@ setopt hist_find_no_dups
 
 setopt correct
 #setopt correct_all
-
