@@ -9,11 +9,12 @@ source "$ZDOTDIR/prompt.zsh"
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$ZDOTDIR/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
+source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"
 
 # History
 mkdir -p "$HOME/.cache/zsh"
 HISTFILE="$HOME/.cache/zsh/.histfile"
-HISTSIZE=2000
+HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 setopt append_history
 setopt share_history
