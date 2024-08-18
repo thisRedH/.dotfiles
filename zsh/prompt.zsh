@@ -1,94 +1,91 @@
-#!/bin/sh
+#!/bin/zsh
 
-# Prompt
+setopt prompt_subst
+source "$ZDOTDIR/git_status.zsh"
+
+# Styling
 
 ## see colors at https://raw.githubusercontent.com/webdiscus/ansis/HEAD/docs/img/ansi256.png and https://unix.stackexchange.com/a/124409
 ## convert colors using https://stackoverflow.com/a/26665998/22279121
 
-# Styling
-usr_style_8="%B%F{3}"                   # yellow, bold
-usr_style_root_8="%B%F{1}"              # red, bold
-
-usr_style_256="%B%F{227}"               # yellow-green, bold
-usr_style_root_256=$usr_style_root_8    # same
-
-
-host_style_8="%F{5}"        # magenta
-dir_style_8=""              # none
-
-host_style_256="%F{127}"    # magenta
-dir_style_256="%F{240}"     # dark gray
-
-# Defoult Styling
-streset="%f%k%b%u%s"
-default_style_8="%B"        # bold
-r_default_style_8="%F{1}"   # red
-s_default_style_8=""        # none
-
-default_style_256="%F{247}"     # light gray, bold
-r_default_style_256="%F{130}"   # dark orange
-s_default_style_256=""          # none
-
-# Styling Logic
+RESET="%f%k%b%u%s"
 num_colors=$(tput colors)
 if [ "$num_colors" -ge 256 ]; then
-    #echo "This terminal supports 256 or more colors."
+    STYLE_USER="%B%F{227}"      # yellow-green, bold
+    STYLE_USER_ROOT="%B%F{1}"   # red, bold
 
-    usr_style=$usr_style_256
-    usr_style_root=$usr_style_root_256
+    STYLE_HOST="%F{127}"        # magenta
+    STYLE_DIR="%F{240}"         # dark gray
 
-    host_style=$host_style_256
-    dir_style=$dir_style_256
-
-    default_style=$default_style_256
-    r_default_style=$r_default_style_256
-    s_default_style=$s_default_style_256
+    STYLE_DEFAULT="%F{247}"     # light gray, bold
+    STYLE_DEFAULT_R="%F{130}"   # dark orange
+    STYLE_DEFAULT_S=""
 elif [ "$num_colors" -ge 8 ]; then
-    #echo "This terminal supports at least 8 colors."
+    STYLE_USER="%B%F{3}"        # yellow, bold
+    STYLE_USER_ROOT="%B%F{1}"   # red, bold
 
-    usr_style=$usr_style_8
-    usr_style_root=$usr_style_root_8
+    STYLE_HOST="%F{5}"          # magenta
+    STYLE_DIR=""
 
-    host_style=$host_style_8
-    dir_style=$dir_style_8
-
-    default_style=$default_style_8
-    r_default_style=$r_default_style_8
-    s_default_style=$s_default_style_8
+    STYLE_DEFAULT="%B"          # bold
+    STYLE_DEFAULT_R="%F{1}"     # red
+    STYLE_DEFAULT_S=""
 else
-    #echo "This terminal supports no colors"
-
-    usr_style=""
-    usr_style_root=""
-
-    host_style=""
-    dir_style=""
-
-    default_style=""
-    r_default_style=$default_style
-    s_default_style=$default_style
+    # No need to set anything
 fi
 
 if [[ $UID == 0 ]]; then
-    usr_style=$usr_style_root
+    STYLE_USER=$STYLE_USER_ROOT
 fi
 
 # Layout
-PROMPT="\
-${usr_style}%n\
-${streset}\
-${default_style}@\
-${streset}\
-${host_style}%m\
-${streset}\
-${dir_style} %~\
-${streset}\
-${default_style} > "
 
-RPROMPT="%(?,,%?)"
+GIT_FORMAT="\
+${STYLE_DIR}[${RESET}\
+${STYLE_DEFAULT}{@B}${RESET}\
+${STYLE_HOST}{ ↑@a}{↓@b}${RESET}\
+${STYLE_DEFAULT_R}{ ·@s}{ !@!}{ ?@?}${RESET}\
+${STYLE_DIR}]{@ }"
+
+PROMPT="\
+${STYLE_USER}%n${RESET}\
+${STYLE_DEFAULT}@${RESET}\
+${STYLE_HOST}%m${RESET}\
+${STYLE_DIR} %~ ${RESET}"\
+'$(zsh_git_status_get $GIT_FORMAT)'"${RESET}\
+${STYLE_DEFAULT}> "
+
+RPROMPT="${STYLE_DEFAULT}"'$elapsed'"${RESET}${STYLE_DEFAULT_R}%(?,,%?)"
 SPROMPT="zsh: correct '%R' to '%r' ? [ynea] "
 
+# from https://gist.github.com/knadh/123bca5cfdae8645db750bfb49cb44b0?permalink_comment_id=4749037#gistcomment-4749037
+precmd() {
+    elapsed=" "
+    if [ $timer ]; then
+        local now=$(date +%s%3N)
+        local d_ms=$(($now-$timer))
+        local d_s=$((d_ms / 1000))
+        local ms=$((d_ms % 1000))
+        local s=$((d_s % 60))
+        local m=$(((d_s / 60) % 60))
+        local h=$((d_s / 3600))
+        if ((h > 0)); then elapsed=(${h}h ${m}m)
+        elif ((m > 0)); then elapsed=(${m}m ${s}s)
+        elif ((s >= 10)); then elapsed=${s}.$((ms / 100))s
+        elif ((s > 0)); then elapsed=${s}.$((ms / 10))s
+        else elapsed=${ms}ms
+        fi
+
+        unset timer
+    fi
+    elapsed="$elapsed "
+}
+preexec() {
+    timer=$(date +%s%3N)
+}
+
 # Exports
-export PROMPT="${streset}${default_style}$PROMPT${streset}"
-export RPROMPT="${streset}${r_default_style}$RPROMPT${streset}"
-export SPROMPT="${streset}${s_default_style}$SPROMPT${streset}"
+
+export PROMPT="${RESET}${STYLE_DEFAULT}${PROMPT}${RESET}"
+export RPROMPT="${RESET}${STYLE_DEFAULT_R}${RPROMPT}${RESET}"
+export SPROMPT="${RESET}${STYLE_DEFAULT_S}${SPROMPT}${RESET}"
