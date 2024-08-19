@@ -10,3 +10,6 @@
 [submodule "zsh/plugins/zsh-you-should-use"]
 	path = zsh/plugins/zsh-you-should-use
 	url = https://github.com/MichaelAquilina/zsh-you-should-use
+[submodule "zsh/plugins/LS_COLORS"]
+	path = zsh/plugins/LS_COLORS
+	url = https://github.com/trapd00r/LS_COLORS.git

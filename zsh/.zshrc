@@ -9,6 +9,15 @@ source "$ZDOTDIR/prompt.zsh"
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$ZDOTDIR/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
+source "$ZDOTDIR/plugins/LS_COLORS/lscolors.sh"
+
+autoload -Uz compinit && compinit
+
+zstyle ':completion:*' menu no
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+eval "$(zoxide init --cmd cd zsh)"
 
 # History
 mkdir -p "$HOME/.cache/zsh"
