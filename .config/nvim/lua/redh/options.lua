@@ -49,7 +49,7 @@ vim.opt.smartcase = true
 
 if jit.os ~= "Windows" then
     vim.opt.undofile = true
-    vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+    vim.opt.undodir = vim.fn.stdpath("cache") .. "/.vim/undodir"
 end
 
 vim.opt.updatetime = 150

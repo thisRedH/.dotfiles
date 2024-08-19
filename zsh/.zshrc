@@ -20,8 +20,8 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 eval "$(zoxide init --cmd cd zsh)"
 
 # History
-mkdir -p "$HOME/.cache/zsh"
-HISTFILE="$HOME/.cache/zsh/.histfile"
+mkdir -p "$XDG_CACHE_HOME/zsh"
+HISTFILE="$XDG_CACHE_HOME/zsh/.histfile"
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 setopt append_history
