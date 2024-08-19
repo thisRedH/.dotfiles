@@ -13,7 +13,7 @@ source "$ZDOTDIR/plugins/LS_COLORS/lscolors.sh"
 
 autoload -Uz compinit && compinit
 
-zstyle ':completion:*' menu no
+zstyle ':completion:*' menu selection
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
