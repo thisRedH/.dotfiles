@@ -13,10 +13,6 @@ alias cat="bat -p"
 alias bat="bat --theme=Dracula"
 alias more="less"
 
-alias vimo="/bin/vim"
-alias vim="nvim"
-alias v="nvim"
-
 alias rm="rm -Iv"
 alias cp="cp -iv"
 alias mv="mv -iv"
@@ -25,12 +21,18 @@ alias grep="grep --color=auto"
 alias egrep="grep -E"
 alias fgrep="grep -F"
 
+alias df="df -h"
+alias free="free -m"
+
+alias z="zoxide"
+
 alias yay="paru"
 #alias yeet="paru -R"
 alias yeet="paru -Runs"
 
-alias df="df -h"
-alias free="free -m"
+alias vimo="/bin/vim"
+alias vim="nvim"
+alias v="nvim"
 
 alias :q="exit"
 alias d="cd ~/dev"
@@ -46,7 +48,6 @@ export YSU_IGNORED_ALIASES=(
     "yeet"
 
     "v"
-    "vim"
 
     ":q"
     "d"
