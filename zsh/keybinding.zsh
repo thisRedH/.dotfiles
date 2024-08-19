@@ -2,23 +2,22 @@
 
 bindkey -e
 
-bindkey "\e[3~" delete-char             # [Delete]
-bindkey "\e[3;2~" delete-char           # [Delete]
-bindkey "\e[3;5~" delete-char           # [Delete]
-bindkey "\e[F" end-of-line              # [End]
-bindkey "\e[4~" end-of-line             # [End]
-bindkey "^[OF" end-of-line              # [End]
-bindkey "\e[H" beginning-of-line        # [Pos1/Home]
-bindkey "\e[1~" beginning-of-line       # [Pos1/Home]
-bindkey "^[OH" beginning-of-line        # [Pos1/Home]
-bindkey "\e[2~" overwrite-mode          # [Insert]
-bindkey "^[" reset-prompt               # [Escape]
-bindkey "\e[5~" up-line-or-history      # [Page Up]
-bindkey "\e[6~" down-line-or-history    # [Page Down]
-bindkey "^[[1;5C" forward-word          # [Ctrl-RightArrow]
-bindkey "^[[1;5D" backward-word         # [Ctrl-LeftArrow]
-bindkey "^H" backward-kill-word         # [Ctrl-Backspace]
-bindkey "^[[3;5~" kill-word             # [Ctrl-Delete]
+bindkey "^[" reset-prompt                   # [Escape]
+
+bindkey "^[[1;5C" forward-word              # [Ctrl-RightArrow]
+bindkey "^[[5C" forward-word                # [Ctrl-RightArrow]
+bindkey "^[[1;5D" backward-word             # [Ctrl-LeftArrow]
+bindkey "^[[5D" backward-word               # [Ctrl-LeftArrow]
+
+bindkey "^H" backward-kill-word             # [Ctrl-Backspace]
+bindkey "^[[3;5~" kill-word                 # [Ctrl-Delete]
+
+bindkey "$(tput khome)" beginning-of-line   # [HOME]
+bindkey "$(tput kend)" end-of-line          # [End]
+bindkey "$(tput kdch1)" delete-char         # [Delete]
+bindkey "$(tput kpp)" up-line-or-history    # [Page Up]
+bindkey "$(tput knp)" down-line-or-history  # [Page Down]
+bindkey "$(tput kich1)" overwrite-mode      # [Insert]
 
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
