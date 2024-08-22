@@ -1,5 +1,7 @@
 # by thisRedh
 
+autoload -Uz compinit && compinit
+
 # Local
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/keybinding.zsh"
@@ -11,7 +13,10 @@ source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$ZDOTDIR/plugins/zsh-you-should-use/you-should-use.plugin.zsh"
 source "$ZDOTDIR/plugins/LS_COLORS/lscolors.sh"
 
-autoload -Uz compinit && compinit
+source "$ZDOTDIR/plugins/ohmyzsh/plugins/sudo/sudo.plugin.zsh"
+source "$ZDOTDIR/plugins/ohmyzsh/plugins/git/git.plugin.zsh"
+source "$ZDOTDIR/plugins/ohmyzsh/plugins/gitignore/gitignore.plugin.zsh"
+source "$ZDOTDIR/plugins/ohmyzsh/plugins/aliases/aliases.plugin.zsh"
 
 zstyle ':completion:*' menu selection
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'

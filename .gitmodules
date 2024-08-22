@@ -13,3 +13,6 @@
 [submodule "zsh/plugins/LS_COLORS"]
 	path = zsh/plugins/LS_COLORS
 	url = https://github.com/trapd00r/LS_COLORS.git
+[submodule "zsh/plugins/ohmyzsh"]
+	path = zsh/plugins/ohmyzsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
