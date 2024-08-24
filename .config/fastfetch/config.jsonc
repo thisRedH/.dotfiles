@@ -1,0 +1,85 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "chafa",
+        "source": "$(find \"$XDG_CONFIG_HOME/fastfetch/images/\" -name '*.png' | sort -R | head -1)",
+        "width": 28,
+        "padding": {
+            "top": 1,
+        },
+    },
+    "display": {
+        "separator": ""
+    },
+    "modules": [
+        // fastfetch -h {type}-format
+        {
+            "type": "command",
+            "text": "curl wttr.in/Berlin?format='%c%C+%t+(Feels+like+%f)+%w+%h+%m\\n'",
+            "key": " ",
+            "outputColor": "33",
+        },
+        "break",
+        "title",
+        {
+            "type": "os",
+            "key": "os     ",
+            "format": "{3}{?10} {10}{?} {12}",
+            "keyColor": "33",
+        },
+        {
+            "type": "kernel",
+            "format": "{1} {2}",
+            "key": "kernel ",
+            "keyColor": "33",
+        },
+        {
+            "type": "terminal",
+            "key": "term   ",
+            "format": "{5} {6} {8}",
+            "keycolor": "33",
+        },
+        {
+            "type": "shell",
+            "key": "shell  ",
+            "format": "{6} {4} {8}",
+            "keycolor": "33",
+        },
+        {
+            "type": "packages",
+            "key": "pkgs   ",
+            "format": "{?2}{2} (pacman) {?}{?4}{4} (dpkg){?}{?15}{13} (pkg){?}{?5}{5} (rpm){?}{?33}{33} (nix){?}{?34}{34} (flatpak) {?}{?16}{16} (snap){?}",
+            "keyColor": "33",
+        },
+        "break",
+        {
+            "type": "cpu",
+            "key": "cpu    ",
+            "format": "{1} @ {?7}{7} GHz{?}{/7}{6}{/}",
+            "keyColor": "33",
+        },
+        {
+            "type": "gpu",
+            "key": "gpu   ",
+            "format": "{1} {2} {3}",
+            "keyColor": "33",
+        },
+        {
+            "type": "disk",
+            "key": "disk   ",
+            "keyColor": "33",
+        },
+        {
+            "type": "memory",
+            "key": "ram    ",
+            "keyColor": "33",
+        },
+        {
+            "type": "uptime",
+            "key": "uptime ",
+            "format": "{?1}{1} days {?}{2}h {3}m {4}",
+            "keyColor": "33",
+        },
+        "break",
+    ]
+}
