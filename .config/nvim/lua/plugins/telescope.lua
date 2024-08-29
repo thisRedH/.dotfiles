@@ -21,7 +21,6 @@ return {
             preview = {
                 mime_hook = function(filepath, bufnr, o)
                     local function term_display(cmd)
-                        print(cmd)
                         local chan = vim.api.nvim_open_term(bufnr, {})
 
                         local function send_output(_, data, _)

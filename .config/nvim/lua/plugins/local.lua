@@ -1,5 +1,5 @@
 return {
-    dir = "~/dev/nvim/plugins/ccmdl",
+    dir = "~/dev/ccmdl",
     opts = {
         -- __debug = true,
     }
