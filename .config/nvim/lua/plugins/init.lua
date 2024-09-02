@@ -7,7 +7,6 @@ return {
     {"j-hui/fidget.nvim", event = { "VeryLazy" } , opts = {}},
     -- {"Sam-programs/cmdline-hl.nvim", opts = {}}
 
-    {"Civitasv/cmake-tools.nvim", ft = { "c", "cpp", "cmake" }, opts = {}},
     {"mbbill/undotree", event = { "VeryLazy" }},
     {"christoomey/vim-tmux-navigator"}
 }

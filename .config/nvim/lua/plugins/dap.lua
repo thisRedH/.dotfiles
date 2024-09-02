@@ -1,5 +1,10 @@
 return {
     {
+        "williamboman/mason.nvim",
+        event = { "VeryLazy" },
+        opts = {},
+    },
+    {
         "mfussenegger/nvim-dap",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = { "williamboman/mason.nvim" },
@@ -65,6 +70,7 @@ return {
         "rcarriga/nvim-dap-ui",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
+            "nvim-lua/plenary.nvim",
             "nvim-neotest/nvim-nio",
             "mfussenegger/nvim-dap",
         },
@@ -99,6 +105,9 @@ return {
         },
         init = function ()
             local dap, dapui = require("dap"), require("dapui")
+
+            vim.api.nvim_create_user_command("DapuiOpen", dapui.open, {})
+            vim.api.nvim_create_user_command("DapuiClose", dapui.close, {})
 
             dap.listeners.before.attach.dapui_config = function()
                 dapui.open()

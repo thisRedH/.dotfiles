@@ -5,6 +5,8 @@ vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set({"n", "v"}, "<C-d>", [["_d]])
 
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+
 -- Move arround in insert mode using ctrl+hjkl
 vim.keymap.set("i", "<C-j>", "<C-o>gj")
 vim.keymap.set("i", "<C-k>", "<C-o>gk")
