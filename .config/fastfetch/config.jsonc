@@ -15,7 +15,7 @@
         // fastfetch -h {type}-format
         {
             "type": "command",
-            "text": "curl wttr.in/Berlin?format='%c%C+%t+(Feels+like+%f)+%w+%h+%m\\n'",
+            "text": "cat /tmp/weather_oneline.txt",
             "key": " ",
             "outputColor": "33",
         },
