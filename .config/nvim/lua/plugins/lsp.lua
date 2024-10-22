@@ -50,8 +50,7 @@ return {
                                 "-j=12",
                                 "--all-scopes-completion",
                                 "--completion-style=detailed",
-                                "--header-insertion-decorators",
-                                "--header-insertion=iwyu",
+                                "--header-insertion=never",
                                 "--pch-storage=memory",
                             },
                             on_new_config = function(new_config, _)
@@ -70,6 +69,31 @@ return {
             vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
             vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
+        end,
+    },
+    {
+        "https://gitlab.com/schrieveslaach/sonarlint.nvim",
+        event = { "VeryLazy" },
+        dependencies = { "williamboman/mason-lspconfig.nvim" },
+        ft = { "c", "cpp" },
+        config = function()
+            require("sonarlint").setup({
+                server = {
+                    cmd = {
+                        vim.fn.expand("$MASON/bin/sonarlint-language-server"),
+                        "-stdio",
+                        "-analyzers",
+                        vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarpython.jar"),
+                        vim.fn.expand("$MASON/share/sonarlint-analyzers/sonargo.jar"),
+                        vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarcfamily.jar"),
+                        vim.fn.expand("$MASON/share/sonarlint-analyzers/sonartext.jar"),
+                    }
+                },
+                filetypes = {
+                    "c",
+                    "cpp",
+                }
+            })
         end,
     },
 }

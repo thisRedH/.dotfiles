@@ -10,3 +10,7 @@ export CC="gcc"
 export EDITOR="vim"
 export TERMINAL="alacritty"
 export BROWSER="thorium"
+
+osc52() {
+    printf "\033]52;c;%s\033\\" "$(base64 | tr -d '\n')"
+}
