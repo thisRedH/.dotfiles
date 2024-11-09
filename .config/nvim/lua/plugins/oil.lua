@@ -20,6 +20,12 @@ return {
                     return name == ".git"
                 end,
             },
+            keymaps = {
+                ["<C-h>"] = false,
+                ["<C-l>"] = false,
+                ["<C-r>"] = "actions.refresh",
+                ["<F5>"] = "actions.refresh",
+            },
         })
 
         vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>")
