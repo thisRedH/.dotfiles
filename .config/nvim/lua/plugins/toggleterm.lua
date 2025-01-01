@@ -23,7 +23,7 @@ return {
         end,
     },
     init = function()
-        vim.keymap.set("n", "<leader>ts", "<CMD>ToggleTerm name=' SplitTerm ' direction=horizontal size=13<CR>", { desc = "Open split terminal" })
-        vim.keymap.set("n", "<leader>tt", "<CMD>ToggleTerm name=' FloatTerm ' direction=float<CR>", { desc = "Open floating terminal" })
+        vim.keymap.set("n", "<leader>ts", "<CMD>ToggleTerm name=' SplitTerm ' direction=horizontal size=13<CR>", {desc="terminal: Open split"})
+        vim.keymap.set("n", "<leader>tt", "<CMD>ToggleTerm name=' FloatTerm ' direction=float<CR>", {desc="terminal: Open floating"})
     end,
 }

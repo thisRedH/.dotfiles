@@ -14,7 +14,8 @@ return {
         init = function()
             vim.cmd.colorscheme("gruvbox")
         end,
-    }, {
+    },
+    {
         "folke/tokyonight.nvim",
     }
 }

@@ -21,8 +21,8 @@ return {
                 end
             end
 
-            vim.keymap.set("n", "<F5>", debug, {desc = "dbg: continue debugging or start", remap = true})
-            vim.keymap.set("n", "<leader>dc", debug, {desc = "dbg: continue debugging or start", remap = true})
+            vim.keymap.set("n", "<F5>", debug, {desc = "dbg: Continue debugging or start", remap = true})
+            vim.keymap.set("n", "<leader>dc", debug, {desc = "dbg: Continue debugging or start", remap = true})
         end
     },
 }

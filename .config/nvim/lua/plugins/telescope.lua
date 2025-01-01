@@ -59,12 +59,12 @@ return {
     init = function()
         local builtin = require("telescope.builtin")
 
-        vim.keymap.set("n", "<leader>ff", builtin.find_files)
-        vim.keymap.set("n", "<leader>fg", builtin.live_grep)
-        vim.keymap.set("n", "<leader>fb", function() builtin.current_buffer_fuzzy_find({ skip_empty_lines = true, }) end)
-        vim.keymap.set("n", "<leader>fc", builtin.commands)
-        vim.keymap.set("n", "<leader>fd", builtin.diagnostics)
-        vim.keymap.set("n", "<leader>fm", function() builtin.man_pages({sections = {"1","2","3"}}) end)
+        vim.keymap.set("n", "<leader>ff", builtin.find_files, {desc="telescope: Files"})
+        vim.keymap.set("n", "<leader>fg", builtin.live_grep, {desc="telescope: Live Grep"})
+        vim.keymap.set("n", "<leader>fb", function() builtin.current_buffer_fuzzy_find({skip_empty_lines = true,}) end, {desc="telescope: Buffer"})
+        vim.keymap.set("n", "<leader>fc", builtin.commands, {desc="telescope: Commands"})
+        vim.keymap.set("n", "<leader>fd", builtin.diagnostics, {desc="telescope: Diagnostics"})
+        vim.keymap.set("n", "<leader>fm", function() builtin.man_pages({sections = {"1","2","3"}}) end, {desc="telescope: MAN Page"})
 
         vim.api.nvim_create_autocmd("User", {
             pattern = "TelescopePreviewerLoaded",

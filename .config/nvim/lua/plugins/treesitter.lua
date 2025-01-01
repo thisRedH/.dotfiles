@@ -1,6 +1,5 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = { "andymass/vim-matchup" },
     build = ":TSUpdate",
     main = "nvim-treesitter.configs",
     opts = {
@@ -34,10 +33,9 @@ return {
             enable = true,
             additional_vim_regex_highlighting = false,
         },
-        matchup = {
+        matchup = { -- vim-matchup
             enable = true,
             disable_virtual_text = true,
         },
     }
 }
-

@@ -47,10 +47,8 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.smartcase = true
 
-if jit.os ~= "Windows" then
-    vim.opt.undofile = true
-    vim.opt.undodir = vim.fn.stdpath("cache") .. "/.vim/undodir"
-end
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.stdpath("cache") .. "/.vim/undodir"
 
 vim.opt.updatetime = 150
 
@@ -75,4 +73,3 @@ if os.getenv("SSH_CONNECTION") or os.getenv("SSH_CLIENT") or os.getenv("SSH_TTY"
         },
     }
 end
-

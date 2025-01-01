@@ -15,25 +15,25 @@ return {
                 vim.keymap.set("n", k, f, {desc = d})
             end
 
-            mapn("<F4>", dap.terminate, "dbg: terminate debugging")
-            mapn("<F5>", dap.continue, "dbg: continue debugging or start")
-            mapn("<F6>", dap.step_into, "dbg: step into")
-            mapn("<F7>", dap.step_over, "dbg: step over")
-            mapn("<F8>", dap.step_out, "dbg: step out")
-            mapn("<F9>", dap.step_back, "dbg: step back")
+            mapn("<F4>", dap.terminate, "dbg: Terminate debugging")
+            mapn("<F5>", dap.continue, "dbg: Continue debugging or start")
+            mapn("<F6>", dap.step_into, "dbg: Step into")
+            mapn("<F7>", dap.step_over, "dbg: Step over")
+            mapn("<F8>", dap.step_out, "dbg: Step out")
+            mapn("<F9>", dap.step_back, "dbg: Step back")
 
-            mapn("<leader>dr", dap.restart, "dbg: restart")
-            mapn("<leader>dt", dap.terminate, "dbg: terminate debugging")
-            mapn("<leader>dc", dap.continue, "dbg: continue debugging or start")
-            mapn("<leader>di", dap.step_into, "dbg: step into")
-            mapn("<leader>dn", dap.step_over, "dbg: step over")
-            mapn("<leader>do", dap.step_out, "dbg: step out")
-            mapn("<leader>dp", dap.step_back, "dbg: step back")
+            mapn("<leader>dr", dap.restart, "dbg: Restart")
+            mapn("<leader>dt", dap.terminate, "dbg: Terminate debugging")
+            mapn("<leader>dc", dap.continue, "dbg: Continue debugging or start")
+            mapn("<leader>di", dap.step_into, "dbg: Step into")
+            mapn("<leader>dn", dap.step_over, "dbg: Step over")
+            mapn("<leader>do", dap.step_out, "dbg: Step out")
+            mapn("<leader>dp", dap.step_back, "dbg: Step back")
 
-            mapn("<leader>b", dap.toggle_breakpoint, "dbg: toggle breakpoint")
-            mapn("<leader>db", dap.toggle_breakpoint, "dbg: toggle breakpoint")
-            mapn("<leader>dB", function() dap.toggle_breakpoint(vim.fn.input("Breakpoint condition: ")) end, "dbg: toggle conditional breakpoint")
-            mapn("<leader>dl", function() dap.toggle_breakpoint(nil, nil, vim.fn.input("Breakpoint message: ")) end, "dbg: toggle breakpoint with log message")
+            mapn("<leader>b", dap.toggle_breakpoint, "dbg: Toggle breakpoint")
+            mapn("<leader>db", dap.toggle_breakpoint, "dbg: Toggle breakpoint")
+            mapn("<leader>dB", function() dap.toggle_breakpoint(vim.fn.input("Breakpoint condition: ")) end, "dbg: Toggle conditional breakpoint")
+            mapn("<leader>dl", function() dap.toggle_breakpoint(nil, nil, vim.fn.input("Breakpoint message: ")) end, "dbg: Toggle breakpoint with log message")
         end
     },
     {

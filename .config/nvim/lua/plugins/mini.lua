@@ -21,6 +21,6 @@ return {
                 encode = require("mini.map").gen_encode_symbols.dot("3x2"),
             },
         })
-        vim.keymap.set("n", "<leader>mm", require("mini.map").toggle)
+        vim.keymap.set("n", "<leader>mm", require("mini.map").toggle, {desc="mini.map: Toggle"})
     end
 }

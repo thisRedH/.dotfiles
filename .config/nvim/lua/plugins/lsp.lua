@@ -23,7 +23,6 @@ return {
                     "lua_ls",
                     "clangd",
                     "rust_analyzer",
-                    "gopls",
                 },
                 handlers = {
                     function(server_name) -- default handler
@@ -60,40 +59,40 @@ return {
                                 end
                             end,
                         })
+                    end,
+                    ["zls"] = function()
+                        vim.g.zig_fmt_parse_errors = 0
+                        vim.g.zig_fmt_autosave = 0
+                        require("lspconfig")["zls"].setup({
+                            capabilities = capabilities,
+                            settings = {
+                                zls = {
+                                    enable_build_on_save = true
+                                }
+                            }
+                        })
                     end
                 },
             })
 
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-            vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-            vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-            vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
-        end,
-    },
-    {
-        "https://gitlab.com/schrieveslaach/sonarlint.nvim",
-        event = { "VeryLazy" },
-        dependencies = { "williamboman/mason-lspconfig.nvim" },
-        ft = { "c", "cpp" },
-        config = function()
-            require("sonarlint").setup({
-                server = {
-                    cmd = {
-                        vim.fn.expand("$MASON/bin/sonarlint-language-server"),
-                        "-stdio",
-                        "-analyzers",
-                        vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarpython.jar"),
-                        vim.fn.expand("$MASON/share/sonarlint-analyzers/sonargo.jar"),
-                        vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarcfamily.jar"),
-                        vim.fn.expand("$MASON/share/sonarlint-analyzers/sonartext.jar"),
-                    }
-                },
-                filetypes = {
-                    "c",
-                    "cpp",
-                }
-            })
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, {desc="lsp: Hover"})
+            vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {desc="lsp: Definition"})
+            vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {desc="lsp: References"})
+            vim.keymap.set("n", "<leader>gf", vim.diagnostic.open_float, {desc="lsp: Open Float"})
+            vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, {desc="lsp: Code Action"})
+            vim.keymap.set("n", "<leader>grn", vim.lsp.buf.rename, {desc="lsp: Rename"})
+            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {desc="lsp: Rename"})
+
+            -- fix rust_analyzer https://github.com/neovim/neovim/issues/30985#issuecomment-2447329525
+            for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
+                local default_diagnostic_handler = vim.lsp.handlers[method]
+                vim.lsp.handlers[method] = function(err, result, context, config)
+                    if err ~= nil and err.code == -32802 then
+                        return
+                    end
+                    return default_diagnostic_handler(err, result, context, config)
+                end
+            end
         end,
     },
 }
