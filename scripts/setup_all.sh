@@ -149,7 +149,7 @@ step_zsh_setup() {
     pinfo "Creating '$zshenv_fpath'"
     cat > $zshenv_fpath <<EOF
 export ZDOTDIR=~/.dotfiles/zsh
-[[ -f $ZDOTDIR/.zshenv ]] && . $ZDOTDIR/.zshenv
+[[ -f \$ZDOTDIR/.zshenv ]] && . \$ZDOTDIR/.zshenv
 EOF
 }
 
