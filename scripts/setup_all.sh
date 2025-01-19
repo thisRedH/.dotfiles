@@ -123,21 +123,22 @@ step_git_setup() {
     set_git_alias clonerd "clone --recursive --depth=1"
 }
 
+if [ ! "$DOTFILE_GIT_OUT_DIR" ]; then
+    DOTFILE_GIT_OUT_DIR="$REAL_HOME/.dotfiles"
+fi
+
 step_git_clone_dotfiles() {
     pstep_header "git clone dotfiles"
 
     if [ ! "$DOTFILE_GIT_URL" ]; then
         DOTFILE_GIT_URL="https://github.com/thisRedH/.dotfiles.git"
     fi
-    if [ ! "$DOTFILE_GIT_OUT_DIR" ]; then
-        DOTFILE_GIT_OUT_DIR="$REAL_HOME/.dotfiles"
-    fi
 
     if [ -d "$DOTFILE_GIT_OUT_DIR" ]; then
         pinfo "Skipping clone ('$DOTFILE_GIT_OUT_DIR' already exists)"
     else
         pinfo "Cloning '$DOTFILE_GIT_URL' into '$DOTFILE_GIT_OUT_DIR'"
-        git clone --recursive "$DOTFILE_GIT_URL" "$DOTFILE_GIT_OUT_DIR" || exit $?
+        sudo -H -u $REAL_USER git clone --recursive "$DOTFILE_GIT_URL" "$DOTFILE_GIT_OUT_DIR" || exit $?
     fi
 }
 
@@ -151,6 +152,14 @@ step_zsh_setup() {
 export ZDOTDIR=~/.dotfiles/zsh
 [[ -f \$ZDOTDIR/.zshenv ]] && . \$ZDOTDIR/.zshenv
 EOF
+
+    usermod -s /bin/zsh $REAL_USER
+}
+
+set_tmux_setup() {
+    pstep_header "tmux setup"
+
+    sudo -H -u $REAL_USER git clone --depth=1 https://github.com/tmux-plugins/tpm $DOTFILE_GIT_OUT_DIR/.config/.tmux/plugins/tpm || exit $?
 }
 
 if [ "$(id -u)" -ne 0 ]; then
@@ -163,8 +172,9 @@ case "$1" in
     a|all|al)
         $0 pkg_install || exit 1
         $0 git_setup || exit 1
-	$0 git_clone_dotfiles || exit 1
+        $0 git_clone_dotfiles || exit 1
         $0 zsh_setup || exit 1
+        $0 tmux_setup || exit 1
         ;;
     h|help|"-h"|"--help")
         echo "$help_usage"
@@ -173,8 +183,9 @@ case "$1" in
         echo "  a, all              Run all setup/install steps"
         echo "  i, ipkg             Install and update required packages"
         echo "     sgit             Setup git"
-	echo "     cgitd            Clone .dotfiles to home dir"
+        echo "     cgitd            Clone .dotfiles to home dir"
         echo "     szsh             Setup zsh"
+        echo "     stmux            Setup tmux"
         echo ""
         ;;
     i|ipkg|pkg_install)
@@ -188,6 +199,9 @@ case "$1" in
         ;;
     szsh|zsh_setup)
         step_zsh_setup
+        ;;
+    stmux|tmux_setup)
+        set_tmux_setup
         ;;
     *)
         echo "$help_usage"
