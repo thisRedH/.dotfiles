@@ -159,7 +159,7 @@ EOF
 set_tmux_setup() {
     pstep_header "tmux setup"
 
-    sudo -H -u $REAL_USER git clone --depth=1 https://github.com/tmux-plugins/tpm $DOTFILE_GIT_OUT_DIR/.config/.tmux/plugins/tpm || exit $?
+    sudo -H -u $REAL_USER git clone --depth=1 https://github.com/tmux-plugins/tpm "$DOTFILE_GIT_OUT_DIR/.config/tmux/plugins/tpm" || exit $?
 }
 
 if [ "$(id -u)" -ne 0 ]; then
