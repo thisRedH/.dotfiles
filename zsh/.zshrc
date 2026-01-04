@@ -24,6 +24,10 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 eval "$(zoxide init --cmd cd zsh)"
 
+if [ -f source "/usr/share/nvm/init-nvm.sh" ]; then
+    source "/usr/share/nvm/init-nvm.sh"
+fi
+
 # History
 mkdir -p "$XDG_CACHE_HOME/zsh"
 HISTFILE="$XDG_CACHE_HOME/zsh/.histfile"
