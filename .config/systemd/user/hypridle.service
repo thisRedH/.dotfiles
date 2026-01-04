@@ -1,0 +1,9 @@
+[Unit]
+Description=hypridle (to get logs and being able to restart it)
+
+[Service]
+ExecStart=/usr/bin/hypridle
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
