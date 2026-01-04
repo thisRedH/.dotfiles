@@ -24,7 +24,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 eval "$(zoxide init --cmd cd zsh)"
 
-if [ -f source "/usr/share/nvm/init-nvm.sh" ]; then
+if [ -f "/usr/share/nvm/init-nvm.sh" ]; then
     source "/usr/share/nvm/init-nvm.sh"
 fi
 
