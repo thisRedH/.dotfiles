@@ -31,7 +31,7 @@ fi
 # History
 mkdir -p "$XDG_CACHE_HOME/zsh"
 HISTFILE="$XDG_CACHE_HOME/zsh/.histfile"
-HISTSIZE=10000
+HISTSIZE=50000
 SAVEHIST=$HISTSIZE
 setopt append_history
 setopt share_history
