@@ -11,6 +11,8 @@ export EDITOR="vim"
 export TERMINAL="kitty"
 export BROWSER="zen-browser"
 
+export PATH="$PATH:/home/redh/.local/bin"
+
 osc52() {
     printf "\033]52;c;%s\033\\" "$(base64 | tr -d '\n')"
 }
