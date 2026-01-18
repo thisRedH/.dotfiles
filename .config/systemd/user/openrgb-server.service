@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenRGB Server
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/openrgb --server --server-host 127.0.0.1 --server-port 6742
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=Set OpenRGB Default Profile
+After=openrgb-server.service
+Requires=openrgb-server.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/openrgb --client 127.0.0.1:6742 --profile /home/redh/.config/OpenRGB/default.orp
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target
