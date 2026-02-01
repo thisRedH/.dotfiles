@@ -1,0 +1,9 @@
+[Unit]
+Description=hyprpaper (to get logs and being able to restart it)
+
+[Service]
+ExecStart=/usr/bin/hyprpaper
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
