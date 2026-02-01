@@ -25,10 +25,6 @@
     "on-click": "activate",
     "format-icons": {
       "active": " "
-    },
-    "sort-by-number": true,
-    "persistent-workspaces": {
-      "*": 2
     }
   },
   "clock": {
