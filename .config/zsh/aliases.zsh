@@ -94,6 +94,10 @@ fzf --ansi \
     --preview-window 'up,60%,border-bottom,+{2}+3/3' \
     --bind 'enter:become($VIM_CMD {1} +{2})'"
 
+osc52() {
+    printf "\033]52;c;%s\033\\" "$(base64 | tr -d '\n')"
+}
+
 export YSU_IGNORED_ALIASES=(
     "yay"
     "yeet"
