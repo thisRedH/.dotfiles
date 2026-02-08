@@ -1,14 +1,7 @@
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
-
-export TERM=xterm-256color
 export CLICOLOR=1
 
 export CC="gcc"
-export EDITOR="vim"
-export TERMINAL="kitty"
-export BROWSER="zen-browser"
+export CXX="g++"
+export EDITOR="nvim"
 
 export PATH="$PATH:/home/redh/.local/bin"
