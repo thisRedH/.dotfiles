@@ -1,3 +1,10 @@
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function(args)
+        pcall(vim.treesitter.start, args.buf)
+    end,
+})
+
 vim.api.nvim_create_autocmd("VimEnter", {
     desc = "CD to the file opened in the CLI",
     pattern = "*",
