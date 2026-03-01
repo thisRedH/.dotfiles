@@ -4,20 +4,12 @@ return {
     opts = {
         ensure_installed = {
             "c",
-            "cpp",
-            "rust",
-            "zig",
-            "go",
-            "javascript",
-            "typescript",
-            "python",
             "lua",
 
             "html",
             "css",
             "markdown",
             "markdown_inline",
-            "svelte",
             "bash",
             "dockerfile",
             "gitignore",
